@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 
 import classes from './MealItemForm.module.css';
 import Input from '../../UI/Input';
 
 const MealItemForm = (props) => {
-	const [foodAmount, setFoodAmount] = useState(1);
+	const amountInputRef = useRef();
 
-	const buttonHandler = (event) => {
+	const subbmitHandler = (event) => {
 		event.preventDefault();
-		setFoodAmount((prevState) => prevState + event.target.value);
 	};
 
 	return (
-		<form className={classes.form}>
+		<form
+			className={classes.form}
+			onSubmit={subbmitHandler}>
 			<Input
+				ref={amountInputRef}
 				label='Amount'
 				input={{
 					id: 'amount_' + props.id,
@@ -26,9 +28,7 @@ const MealItemForm = (props) => {
 			/>
 			<button
 				className={classes.form}
-				type='submit'
-				onClick={buttonHandler}
-				value={foodAmount}>
+				type='submit'>
 				+Add
 			</button>
 		</form>

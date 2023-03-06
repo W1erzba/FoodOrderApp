@@ -56,3 +56,4 @@ const Cart = (props) => {
 export default Cart;
 
 // Remember to at least add localStorage data for cart memory
+// No time to code, 2day was only a THEORY lessons.
